@@ -1,5 +1,6 @@
 import React from 'react';
 
+import PhotoFavButton from 'components/PhotoFavButton';
 import './App.scss';
 import PhotoListItem from './components/PhotoListItem';
 
@@ -28,6 +29,7 @@ const App = () => {
   return (
     <div className="App">
       {renderPhotos()}
+      <PhotoFavButton/>
     </div>
   );
 };
