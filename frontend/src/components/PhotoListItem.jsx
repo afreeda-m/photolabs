@@ -6,8 +6,6 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = (props) => {
   const { urls, user, location } = props.data;
 
-  console.log(props.data);
-
   return (
     <section className="photo-list__item">
       <PhotoFavButton/>
