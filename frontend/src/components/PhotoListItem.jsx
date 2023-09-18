@@ -6,16 +6,14 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = (props) => {
   const { urls, user, location } = props.data;
 
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // const openModal = () => {
-  //   setIsModalOpen(true);
-  // }
+  const handleImageClick = () => {
+    props.setIsModalOpen(true);
+  }
 
   return (
     <section className="photo-list__item">
       <PhotoFavButton photoID = {props.photoID} updateFavorites={props.updateFavorites}/>
-      <img src={urls.regular} className="photo-list__image"></img>
+      <img src={urls.regular} className="photo-list__image" onClick={handleImageClick}></img>
       <div className="photo-list__user-details">
         <img src={user.profile} className="photo-list__user-profile"></img>
         <div className="photo-list__user-info">
