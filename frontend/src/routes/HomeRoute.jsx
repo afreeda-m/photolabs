@@ -5,30 +5,24 @@ import TopNavigation from 'components/TopNavigationBar';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
-  const favList = [];
-
-  const [isFav, setIsFav] = useState(favList);
-
-  const updateFavorites = (photo) => {
-    if(isFav.includes(photo)) {
-      setIsFav(isFav.filter((id) => id !== photo));
-    }else {
-      setIsFav([...isFav, photo]);
-    }
-  }
-
-  const hasFavorites = () => {
-    if (isFav.length > 0){
-      return true;
-    }
-
-    return false;
-  }
 
   return (
     <div className="home-route">
-      <TopNavigation hasFavorites = {hasFavorites}/>
-      <PhotoList setIsModalOpen = {props.setIsModalOpen} updateFavorites={updateFavorites}/>
+
+      <TopNavigation
+      topics={props.topics}
+      hasFavorites={props.hasFavorites}
+      />
+
+      <PhotoList
+      photos={props.photos}
+      updateFavorites={props.updateFavorites}
+      selectedPhoto={props.selectedPhoto}
+      setSelectedPhoto={props.setSelectedPhoto}
+      setIsModalOpen={props.setIsModalOpen}
+      hasFavorites={props.hasFavorites}
+      />
+
     </div>
   );
 };

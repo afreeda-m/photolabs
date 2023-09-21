@@ -1,20 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 
-import photos from "mocks/photos";
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
 
+  const { photos } = props;
+
   return (
     <ul className="photo-list">
-      {photos.map((photoData) => (
+      {photos.map((photo) => (
         <PhotoListItem
-        key={photoData.id}
-        photoID = {photoData.id}
-        data={photoData}
+        key={photo.id}
+        photoID = {photo.id}
+        data={photo}
         updateFavorites={props.updateFavorites}
-        setIsModalOpen={props.setIsModalOpen}/>
+        selectedPhoto={props.selectedPhoto}
+        setSelectedPhoto={props.setSelectedPhoto}
+        setIsModalOpen={props.setIsModalOpen}
+        isFull={false}
+        />
       ))}
     </ul>
   );

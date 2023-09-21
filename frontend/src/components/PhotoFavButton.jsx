@@ -4,8 +4,11 @@ import '../styles/PhotoFavButton.scss';
 import FavIcon from './FavIcon';
 
 function PhotoFavButton(props) {
+
   const [isFav, setIsFav] = useState(false);
+
   const updateFavorites = props.updateFavorites;
+
   const photoID = props.photoID;
 
   const favSwitch = () => {
