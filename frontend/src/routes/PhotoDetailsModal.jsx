@@ -9,17 +9,16 @@ const PhotoDetailsModal = (props) => {
   return (
       <div className="photo-details-modal">
         <button className="photo-details-modal__close-button">
-          <img src={closeSymbol} onClick={() => {props.setIsModalOpen(false)}}alt="close symbol" />
+          <img src={closeSymbol} onClick={() => {props.dispatch({type: 'DISPLAY_PHOTO_DETAILS', isVisible: false})}} alt="close symbol" />
         </button>
 
         <PhotoListItem
           key={props.selectedPhoto.id}
           photoID = {props.selectedPhoto.id}
           data={props.selectedPhoto}
-          updateFavorites={props.updateFavorites}
           selectedPhoto={props.selectedPhoto}
-          setSelectedPhoto={props.setSelectedPhoto}
           setIsModalOpen={props.setIsModalOpen}
+          dispatch = {props.dispatch}
           isFull={true}
         />
 
@@ -27,11 +26,10 @@ const PhotoDetailsModal = (props) => {
 
         <PhotoList
         photos={Object.values(props.selectedPhoto.similar_photos)}
-        updateFavorites={props.updateFavorites}
         selectedPhoto={props.selectedPhoto}
-        setSelectedPhoto={props.setSelectedPhoto}
         setIsModalOpen={props.setIsModalOpen}
         hasFavorites={props.hasFavorites}
+        dispatch = {props.dispatch}
         />
 
       </div>

@@ -7,13 +7,16 @@ function PhotoFavButton(props) {
 
   const [isFav, setIsFav] = useState(false);
 
-  const updateFavorites = props.updateFavorites;
-
   const photoID = props.photoID;
 
   const favSwitch = () => {
     setIsFav(!isFav);
-    updateFavorites(photoID);
+    if (!isFav) {
+      props.dispatch({type: 'FAV_PHOTO_ADDED', id: photoID})
+    } else {
+      props.dispatch({type: 'FAV_PHOTO_REMOVED', id: photoID})
+    }
+
   };
 
   return (

@@ -14,10 +14,9 @@ const PhotoList = (props) => {
         key={photo.id}
         photoID = {photo.id}
         data={photo}
-        updateFavorites={props.updateFavorites}
         selectedPhoto={props.selectedPhoto}
-        setSelectedPhoto={props.setSelectedPhoto}
         setIsModalOpen={props.setIsModalOpen}
+        dispatch = {props.dispatch}
         isFull={false}
         />
       ))}

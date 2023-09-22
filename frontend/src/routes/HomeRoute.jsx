@@ -16,11 +16,10 @@ const HomeRoute = (props) => {
 
       <PhotoList
       photos={props.photos}
-      updateFavorites={props.updateFavorites}
       selectedPhoto={props.selectedPhoto}
-      setSelectedPhoto={props.setSelectedPhoto}
       setIsModalOpen={props.setIsModalOpen}
       hasFavorites={props.hasFavorites}
+      dispatch = {props.dispatch}
       />
 
     </div>

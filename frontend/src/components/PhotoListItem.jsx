@@ -8,15 +8,15 @@ const PhotoListItem = (props) => {
   const { urls, location, user } = props.data;
 
   const handleImageClick = () => {
-    props.setIsModalOpen(true);
-    props.setSelectedPhoto(props.data);
+    props.dispatch({type: 'DISPLAY_PHOTO_DETAILS', isVisible: true})
+    props.dispatch({type: 'SET_PHOTO_DATA', data: props.data})
   }
 
   return (
     <section className="photo-list__item">
       <PhotoFavButton
       photoID = {props.photoID}
-      updateFavorites={props.updateFavorites}
+      dispatch = {props.dispatch}
       photo={props.data}
       />
       {!props.isFull && <img className="photo-list__image" onClick={handleImageClick} src={urls.regular}/>}
