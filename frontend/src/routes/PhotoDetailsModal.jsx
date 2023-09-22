@@ -23,6 +23,8 @@ const PhotoDetailsModal = (props) => {
           isFull={true}
         />
 
+        <div className="photo-details-modal__header">Similar Photos</div>
+
         <PhotoList
         photos={Object.values(props.selectedPhoto.similar_photos)}
         updateFavorites={props.updateFavorites}
@@ -31,6 +33,7 @@ const PhotoDetailsModal = (props) => {
         setIsModalOpen={props.setIsModalOpen}
         hasFavorites={props.hasFavorites}
         />
+
       </div>
   )
 };
