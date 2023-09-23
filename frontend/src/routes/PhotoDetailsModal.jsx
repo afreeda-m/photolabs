@@ -22,16 +22,16 @@ const PhotoDetailsModal = (props) => {
           isFull={true}
         />
 
-        <div className="photo-details-modal__header">Similar Photos</div>
-
-        <PhotoList
-        photos={Object.values(props.selectedPhoto.similar_photos)}
-        selectedPhoto={props.selectedPhoto}
-        setIsModalOpen={props.setIsModalOpen}
-        hasFavorites={props.hasFavorites}
-        dispatch = {props.dispatch}
-        />
-
+        <div className="photo-details-modal__images">
+          <div className="photo-details-modal__header">Similar Photos</div>
+            <PhotoList
+            photos={Object.values(props.selectedPhoto.similar_photos)}
+            selectedPhoto={props.selectedPhoto}
+            setIsModalOpen={props.setIsModalOpen}
+            hasFavorites={props.hasFavorites}
+            dispatch = {props.dispatch}
+            />
+        </div>
       </div>
   )
 };
