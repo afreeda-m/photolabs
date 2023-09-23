@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import useApplicationData from 'Hooks/useApplicationData';
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+
 import './App.scss';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  let {favoritedPhotos, isModalOpen, selectedPhoto, hasFavorites, dispatch} = useApplicationData();
+  let {favoritedPhotos, isModalOpen, selectedPhoto, hasFavorites, dispatch, photoData, topicData} = useApplicationData();
 
   return (
     <div className="App">
       <HomeRoute
-      photos={photos}
-      topics={topics}
+      photos={photoData}
+      topics={topicData}
       hasFavorites={hasFavorites}
       setIsModalOpen={isModalOpen}
       dispatch = {dispatch}
