@@ -9,8 +9,8 @@ const TopNavigation = (props) => {
 
   return (
     <div className="top-nav-bar">
-      <span className="top-nav-bar__logo">PhotoLabs</span>
-      <TopicList topics={topics}/>
+      <span onClick={()=> props.dispatch({type: "SET_TOPIC", topicID: null})} className="top-nav-bar__logo">PhotoLabs</span>
+      <TopicList topics={topics} dispatch = {props.dispatch}/>
       <FavBadge hasFavorites={props.hasFavorites}/>
     </div>
   )

@@ -7,7 +7,8 @@ export const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
-  SET_PHOTO_CATALOGUE: 'SET_PHOTO_CATALOGUE'
+  SET_PHOTO_CATALOGUE: 'SET_PHOTO_CATALOGUE',
+  SET_TOPIC: 'SET_TOPIC'
 }
 
 const useApplicationData = () => {
@@ -17,7 +18,8 @@ const useApplicationData = () => {
     selectedPhoto: {},
     hasFavorites: false,
     photoData: [],
-    topicData: []
+    topicData: [],
+    selectedTopic: null
   });
 
   useEffect(() => {
@@ -35,6 +37,23 @@ const useApplicationData = () => {
         dispatch({type: ACTIONS.SET_TOPIC_DATA, payload: data })
       });
   }, []);
+
+  useEffect(() => {
+    if (!state.selectedTopic){
+      fetch("http://localhost:8001/api/photos")
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({type: ACTIONS.SET_PHOTO_CATALOGUE, payload: data })
+      });
+    } else {
+      fetch("http://localhost:8001/api/topics/photos/" + state.selectedTopic)
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({type: ACTIONS.SET_PHOTO_CATALOGUE, payload: data })
+      });
+    }
+
+  }, [state.selectedTopic]);
 
   function reducer(state, action) {
     let favoritedPhotos;
@@ -55,6 +74,8 @@ const useApplicationData = () => {
         return {...state, photoData: action.payload}
       case ACTIONS.SET_TOPIC_DATA:
         return {...state, topicData: action.payload}
+      case ACTIONS.SET_TOPIC:
+        return {...state, selectedTopic: action.topicID}
       default:
         throw new Error(
           `Tried to reduce with unsupported action type: ${action.type}`

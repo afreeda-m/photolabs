@@ -12,6 +12,7 @@ const HomeRoute = (props) => {
       <TopNavigation
       topics={props.topics}
       hasFavorites={props.hasFavorites}
+      dispatch = {props.dispatch}
       />
 
       <PhotoList

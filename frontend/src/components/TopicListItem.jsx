@@ -6,7 +6,7 @@ const TopicListItem = (props) => {
 
   return (
     <div className="topic-list__item">
-      <span>{props.title}</span>
+      <span onClick={() => props.dispatch({type: "SET_TOPIC", topicID: props.id})}>{props.title}</span>
     </div>
   );
 };
