@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Define the FavIcon component with destructured props 'displayAlert' and 'selected'
 const FavIcon = ({displayAlert, selected}) => {
 
   return (

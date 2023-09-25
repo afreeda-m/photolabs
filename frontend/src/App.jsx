@@ -9,10 +9,12 @@ import './App.scss';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  let {favoritedPhotos, isModalOpen, selectedPhoto, hasFavorites, dispatch, photoData, topicData} = useApplicationData();
+  // Extract all relevant information (data and functions) from the imported useApplicationData function
+  let {isModalOpen, selectedPhoto, hasFavorites, dispatch, photoData, topicData} = useApplicationData();
 
   return (
     <div className="App">
+      {/* Render the HomeRoute component by passing relevant props */}
       <HomeRoute
       photos={photoData}
       topics={topicData}
@@ -20,6 +22,8 @@ const App = () => {
       setIsModalOpen={isModalOpen}
       dispatch = {dispatch}
       />
+
+      {/* Conditionally render the PhotoDetailsModal component if 'isModalOpen' is true */}
       {isModalOpen && <PhotoDetailsModal
       hasFavorites={hasFavorites}
       setIsModalOpen={isModalOpen}
