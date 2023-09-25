@@ -17,14 +17,14 @@ const PhotoListItem = (props) => {
 
   return (
     // Render a section element
-    <section className="photo-list__item">
+    <section className="photo-list__item" onClick={handleImageClick}>
       <PhotoFavButton
       photoID = {props.photoID}
       dispatch = {props.dispatch}
       photo={props.data}
       />
       {/* Conditionally render image based on if modal is open or not */}
-      {!props.isFull && <img className="photo-list__image" onClick={handleImageClick} src={urls.regular}/>}
+      {!props.isFull && <img className="photo-list__image" src={urls.regular}/>}
       {props.isFull && <img className="photo-details-modal__image" src={urls.full}/>}
       <div className="photo-list__user-details">
         <img src={user.profile} className="photo-list__user-profile"></img>
