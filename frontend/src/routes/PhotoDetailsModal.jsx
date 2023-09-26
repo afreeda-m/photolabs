@@ -22,6 +22,8 @@ const PhotoDetailsModal = (props) => {
           setIsModalOpen={props.setIsModalOpen}
           dispatch = {props.dispatch}
           isFull={true}
+          isClickable = {false}
+          favoritedPhotos={props.favoritedPhotos}
         />
 
         {/* Display a section for similar photos */}
@@ -34,6 +36,8 @@ const PhotoDetailsModal = (props) => {
             setIsModalOpen={props.setIsModalOpen}
             hasFavorites={props.hasFavorites}
             dispatch = {props.dispatch}
+            favoritedPhotos={props.favoritedPhotos}
+            isClickable = {false}
             />
         </div>
       </div>

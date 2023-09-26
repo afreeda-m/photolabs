@@ -15,17 +15,25 @@ const PhotoListItem = (props) => {
     props.dispatch({type: 'SET_PHOTO_DATA', data: props.data})
   }
 
+  let imageClassName = 'photo-list__image'
+  let imageUrl = urls.regular;
+  if (props.isFull) {
+    imageClassName = 'photo-details-modal__image'
+    imageUrl = urls.full;
+  }
+
   return (
     // Render a section element
-    <section className="photo-list__item" onClick={handleImageClick}>
+    <section className="photo-list__item">
       <PhotoFavButton
       photoID = {props.photoID}
       dispatch = {props.dispatch}
       photo={props.data}
+      favoritedPhotos={props.favoritedPhotos}
       />
       {/* Conditionally render image based on if modal is open or not */}
-      {!props.isFull && <img className="photo-list__image" src={urls.regular}/>}
-      {props.isFull && <img className="photo-details-modal__image" src={urls.full}/>}
+      {props.isClickable && <img className={imageClassName} src={imageUrl} onClick={handleImageClick}/>}
+      {!props.isClickable && <img className={imageClassName} src={imageUrl}/>}
       <div className="photo-list__user-details">
         <img src={user.profile} className="photo-list__user-profile"></img>
         <div className="photo-list__user-info">

@@ -6,28 +6,25 @@ import FavIcon from './FavIcon';
 function PhotoFavButton(props) {
 
   // Define a state variable 'isFav' and a function 'setIsFav' to toggle favorite status
-  const [isFav, setIsFav] = useState(false);
+
+  let currentState = false;
+  if (props.favoritedPhotos.includes(props.photoID)){
+    currentState = true;
+  }
 
   // Extract photoID from props
   const photoID = props.photoID;
 
   // Define 'favSwitch' function to toggle the favorite status and dispatch an action
   const favSwitch = () => {
-    setIsFav(!isFav);
-    // Dispatch an action based on the current favorite status
-    if (!isFav) {
-      props.dispatch({type: 'FAV_PHOTO_ADDED', id: photoID})
-    } else {
-      props.dispatch({type: 'FAV_PHOTO_REMOVED', id: photoID})
-    }
-
+    props.dispatch({type: 'UPDATE_FAV_PHOTO', id: photoID})
   };
 
   return (
     // Render a clickable div
     <div onClick={favSwitch} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-        <FavIcon selected={isFav}/>
+        <FavIcon selected={currentState}/>
       </div>
     </div>
   );

@@ -7,6 +7,10 @@ const PhotoList = (props) => {
 
   // Extract photos obkect from props
   const { photos } = props;
+  let isClickable = false;
+  if (props.isClickable) {
+    isClickable = props.isClickable;
+  }
 
   return (
     // Render an unordered list with the class 'photo-list'
@@ -21,6 +25,8 @@ const PhotoList = (props) => {
         setIsModalOpen={props.setIsModalOpen}
         dispatch = {props.dispatch}
         isFull={false}
+        isClickable = {isClickable}
+        favoritedPhotos={props.favoritedPhotos}
         />
       ))}
     </ul>

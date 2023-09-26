@@ -2,14 +2,13 @@ import { useEffect, useReducer } from "react";
 
 // Define and export user action types
 export const ACTIONS = {
-  FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
-  FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
   SET_PHOTO_CATALOGUE: 'SET_PHOTO_CATALOGUE',
-  SET_TOPIC: 'SET_TOPIC'
+  SET_TOPIC: 'SET_TOPIC',
+  UPDATE_FAV: 'UPDATE_FAV_PHOTO'
 }
 
 // Define the custom hook
@@ -67,11 +66,12 @@ const useApplicationData = () => {
   function reducer(state, action) {
     let favoritedPhotos;
     switch (action.type) {
-      case ACTIONS.FAV_PHOTO_ADDED:
+      case ACTIONS.UPDATE_FAV:
+        if (state.favoritedPhotos.includes(action.id)){
+          favoritedPhotos = state.favoritedPhotos.filter((id) => id !== action.id)
+          return {...state, favoritedPhotos, hasFavorites: favoritedPhotos.length > 0}
+        }
         favoritedPhotos = [...state.favoritedPhotos, action.id]
-        return {...state, favoritedPhotos, hasFavorites: favoritedPhotos.length > 0}
-      case ACTIONS.FAV_PHOTO_REMOVED:
-        favoritedPhotos = state.favoritedPhotos.filter((id) => id !== action.id)
         return {...state, favoritedPhotos, hasFavorites: favoritedPhotos.length > 0}
       case ACTIONS.SET_PHOTO_DATA:
         let selectedPhoto = action.data;

@@ -5,7 +5,6 @@ import TopNavigation from 'components/TopNavigationBar';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
-
   return (
     <div className="home-route">
 
@@ -23,6 +22,8 @@ const HomeRoute = (props) => {
       setIsModalOpen={props.setIsModalOpen}
       hasFavorites={props.hasFavorites}
       dispatch = {props.dispatch}
+      favoritedPhotos={props.favoritedPhotos}
+      isClickable = {true}
       />
 
     </div>

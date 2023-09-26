@@ -10,7 +10,7 @@ import './App.scss';
 const App = () => {
 
   // Extract all relevant information (data and functions) from the imported useApplicationData function
-  let {isModalOpen, selectedPhoto, hasFavorites, dispatch, photoData, topicData} = useApplicationData();
+  let {favoritedPhotos, isModalOpen, selectedPhoto, hasFavorites, dispatch, photoData, topicData} = useApplicationData();
 
   return (
     <div className="App">
@@ -20,6 +20,8 @@ const App = () => {
       topics={topicData}
       hasFavorites={hasFavorites}
       setIsModalOpen={isModalOpen}
+      selectedPhoto={selectedPhoto}
+      favoritedPhotos={favoritedPhotos}
       dispatch = {dispatch}
       />
 
@@ -28,6 +30,7 @@ const App = () => {
       hasFavorites={hasFavorites}
       setIsModalOpen={isModalOpen}
       selectedPhoto={selectedPhoto}
+      favoritedPhotos={favoritedPhotos}
       dispatch = {dispatch}
       />}
     </div>
