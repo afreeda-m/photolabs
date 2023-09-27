@@ -14,11 +14,11 @@ Introducing PhotoLabs, your passport to a realm of breathtaking visuals! 📸
 
 <img width="885" alt="Screenshot 2023-09-25 at 3 18 07 PM" src="https://github.com/afreeda-m/photolabs/assets/64160666/898d1cc7-c55a-4977-ad58-736c19ba8cfe">
 
-# Dependencies
+## Dependencies
 
-## React
-## Create-react-app
-## Express
+- React
+- Create-react-app
+- Express
 
 ## Setup
 
